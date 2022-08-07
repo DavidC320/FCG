@@ -6,7 +6,7 @@ from cProfile import label
 import os
 from tkinter import *
 from tkinter import ttk
-from PIL import Image, ImageTk, ImageFont, ImageDraw
+from pil_image_maker import create_default_img, create_comic_panel
 
 class Image_app(Tk):
     def __init__(self):
@@ -41,8 +41,7 @@ class Image_app(Tk):
 class Generator(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent, padx=50, pady=50, bg="#faefca")
-        self.comic_img = Image.new("RGB", (550, 550), (0, 0, 0))
-        self.comic_img = ImageTk.PhotoImage(self.comic_img)
+        self.comic_img = create_comic_panel()
 
         ################################################################################################ frames
         self.comic_holder = Frame(self, bg="#bbc0d4", width=550, height=550, relief="sunken", border=10)
@@ -60,11 +59,15 @@ class Generator(Frame):
         self.image_label.grid(column=0, row=0)
 
         ################################################################################################ buttons
-        self.randomize_comic = Button(self.comic_cont_panel, text="Random")
-        self.save_comic = Button(self.comic_cont_panel, text="Save")
+        self.randomize_comic = Button(self.comic_cont_panel, text="Random", command=self.random_comic)
+        self.save_comic = Button(self.comic_cont_panel, text="Save", state=DISABLED)
 
         self.randomize_comic.grid(column=0, row=1, sticky="WE")
         self.save_comic.grid(column=0, row=2, sticky="WE")
+
+    def random_comic(self):
+        self.comic_img = create_comic_panel()
+        self.image_label.config(image=self.comic_img)
 
 if __name__ == "__main__":
     app = Image_app()

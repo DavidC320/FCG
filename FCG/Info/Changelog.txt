@@ -1,0 +1,10 @@
+# 0.0.1
+    Added Create_defualt_img in pil_image_maker.py
+        creates a basic template for a 4 panel comic
+    
+    added create_comic_panel in pil_image_maker.py
+        creates the actual comic.
+
+    added four panal funtionality with text support.
+
+# 0.0.2

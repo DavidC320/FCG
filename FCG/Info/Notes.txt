@@ -1,0 +1,49 @@
+Notes created on 8/6/2022
+
+8/6/2022
+    working on the template for the comic.
+
+    Future Problems:
+        The comic panels could leak into other panels which can cause issues so I think the best course of action is to create 4 seperate images then combine them later.
+        I'll keep the default image as a fall back and refrence.
+
+    Todo:
+        1. create 4 and 3 panel support
+            4 panels.
+                size = (275, 275)
+
+            3 panels.
+                size = (183, 550)
+
+            reminders:
+                the panels will have different locations for characters, single bubbles, text
+                also difrent sizes for those things
+
+                when there is 1 line, the line is in the center 1/2
+                when there is 2 lines,  the lines are in a 1/3
+                when there is 3 lines, the lines are in a 1/4
+                all of these are anchered to the center
+                a conversion equation for length of text to font size
+                29 # Length / 15 # size * ? / 45
+
+            information:
+                the text limit is 29
+                the minimum size for 29 is 15
+                maximum lines = 3
+                line length = 29
+                minimum font size = 15
+                maximum font size = 45
+
+8/7/2022
+    implimented font thing from Vishal and Paul
+
+    Future Problems:
+        None that can be forseen
+
+    Todo
+        version number update
+        crearte one stupid image <-- very funny
+        create default lists
+            start
+            setup
+            end
