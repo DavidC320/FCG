@@ -8,3 +8,10 @@
     added four panal funtionality with text support.
 
 # 0.0.2
+    one line text will now scale in size based on text size.
+    Added defualt images
+    added built in text for start, mid, and end
+    developed the info tab
+    made where chacters can appear in a panal
+
+# 0.0.3

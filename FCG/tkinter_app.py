@@ -3,10 +3,10 @@
 # David Cruz
 
 from cProfile import label
-import os
 from tkinter import *
 from tkinter import ttk
 from pil_image_maker import create_default_img, create_comic_panel
+from toplevels import Info
 
 class Image_app(Tk):
     def __init__(self):
@@ -21,7 +21,7 @@ class Image_app(Tk):
         # Menu
         mainmenu = Menu(self)
         # menu items
-        mainmenu.add_command(label = "Info")
+        mainmenu.add_command(label = "Info", command=self.open_info)
 
         self.config(menu=mainmenu)
         
@@ -37,6 +37,13 @@ class Image_app(Tk):
         self.tab_menu.add(tab1, text="Generator")
         # pack tabs
         self.tab_menu.grid(column=0, row=0)
+
+    def open_info(self):
+        # code based off of Python Tutorial and GeeksforGeeks
+        # https://www.pythontutorial.net/tkinter/tkinter-toplevel/
+        # https://www.geeksforgeeks.org/python-tkinter-toplevel-widget/
+        lev2 = Info(self)
+        lev2.grab_set()
 
 class Generator(Frame):
     def __init__(self, parent):

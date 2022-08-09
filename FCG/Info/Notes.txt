@@ -47,3 +47,17 @@ Notes created on 8/6/2022
             start
             setup
             end
+
+8/8/2022
+    worked on making text random.
+
+    Future Problems:
+        None that can be forseen
+
+    Todo:
+        Work more on info
+        create the settings tab
+            add music
+        create the secret code tab
+            create some secret windows
+        Add random text adder

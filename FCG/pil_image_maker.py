@@ -3,11 +3,20 @@
 # David Cruz
 
 from math import ceil
+from secrets import choice
 from tkinter import CENTER
 from PIL import Image, ImageTk, ImageFont, ImageDraw
 from random import randint
+from text_list import grab_text
+import os
 
-def create_default_img():
+default_characters = []
+for image in os.listdir("FCG\defualt_img"):
+    image = r"FCG\\defualt_img\\" + image
+    default_characters.append(image)
+
+
+def create_default_img(): # Don't use
     # inital image
     img = Image.new("RGBA", (550, 550), (250, 250, 250, 250))
 
@@ -31,11 +40,21 @@ def create_comic_panel(use_4 = True):
 def four_paneled():
     panels = []
 
-    for _ in range(4):
+    # Main character colro
+    main_color = (randint(0, 250), randint(0, 250), randint(0, 250), 250)
+
+    # create Panels
+    for num in range(4):
         panel = Image.new("RGBA", (275, 275), (randint(0, 250), randint(0, 250), randint(0, 250), 250))
+        # draw chacters
+        panel = create_chacter(panel,main_color)
+
+        panel = create_chacter(panel, ((randint(0, 250), randint(0, 250), randint(0, 250), 250)), True)
+
+        # Draw shapes and text
         draw = ImageDraw.Draw(panel)
 
-        text ="alkjsdhkjlsdfhghf;d;fjkghjghjkdfsghghj" # klnmopqrstuvwxyz123
+        text = grab_text(num)
 
         draw.rectangle(((0, 0), (275, 70)), fill="white", outline="black", width=5)
 
@@ -81,9 +100,12 @@ def comic_text_draw(str, img):
         font = ImageFont.truetype(r"C:WINDOWS\\FONTS\\LTYPE.TTF", font_size)
 
     divid_by = divions.get(lines)
+    print(divid_by)
     start_index = 0
     end_index = 29
+    print(lines)
     for num in range(lines):
+        print(start_index, end_index, divid_by)
         if num == lines:
             text = str[start_index :]
         else:
@@ -93,8 +115,25 @@ def comic_text_draw(str, img):
 
         start_index += 29
         end_index += 29
-        divid_by += divid_by
+        divid_by += divions.get(lines)
     
+def create_chacter(img, color, flip = False):
+    main = Image.open(choice(default_characters))
+    main_data = main.getdata()
+
+    new_image = []
+    for item in main_data:
+        if item[0] in list(range(120, 250)):
+            new_image.append(color)
+        else:
+            new_image.append(item)
+
+    main.putdata(new_image)
+    if flip:
+        main = main.transpose(Image.FLIP_LEFT_RIGHT)
+
+    final = Image.alpha_composite(img, main)
+    return final
 
 
 
