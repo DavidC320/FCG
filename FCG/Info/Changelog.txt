@@ -15,3 +15,8 @@
     made where chacters can appear in a panal
 
 # 0.0.3
+    Added save funtionality
+    Added secret windows
+
+# 0.0.4
+    

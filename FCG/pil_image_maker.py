@@ -3,10 +3,9 @@
 # David Cruz
 
 from math import ceil
-from secrets import choice
-from tkinter import CENTER
+from tkinter import filedialog
 from PIL import Image, ImageTk, ImageFont, ImageDraw
-from random import randint
+from random import randint, choice
 from text_list import grab_text
 import os
 
@@ -72,7 +71,7 @@ def four_paneled():
     strip.paste(panels[3], (275, 275))
 
     img = ImageTk.PhotoImage(strip)
-    return img
+    return strip, img
 
 def comic_text_draw(str, img):
     max_char = 29*3
@@ -100,12 +99,9 @@ def comic_text_draw(str, img):
         font = ImageFont.truetype(r"C:WINDOWS\\FONTS\\LTYPE.TTF", font_size)
 
     divid_by = divions.get(lines)
-    print(divid_by)
     start_index = 0
     end_index = 29
-    print(lines)
     for num in range(lines):
-        print(start_index, end_index, divid_by)
         if num == lines:
             text = str[start_index :]
         else:
@@ -135,5 +131,9 @@ def create_chacter(img, color, flip = False):
     final = Image.alpha_composite(img, main)
     return final
 
-
-
+def save_image(img):
+    # code based off of 
+    path = filedialog.asksaveasfile(mode='w', defaultextension=".png")
+    if path:
+        abs_path = os.path.abspath(path.name)
+        img.save(abs_path)

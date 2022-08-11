@@ -30,7 +30,7 @@ def stuff():
 
     new_img.paste(img_clone, (150, -50))
 
-    new_img.save("junk\\again.png")
+    new_img.save("junk\\again.png", "png")
 
     # owl time
     img2 = Image.open(r"Images\\hat3.png")
